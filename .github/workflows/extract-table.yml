@@ -17,7 +17,7 @@ on:
         required: true
         type: string
         default: 'extracted_tables.csv'
-      header-rows:
+      header_rows:
         description: 'Number of the header rows'
         required: true
         type: string
@@ -52,7 +52,8 @@ jobs:
         python scripts/extract_table.py \
           --pdf-url "${{ github.event.inputs.pdf_url }}" \
           --pages "${{ github.event.inputs.pages }}" \
-          --output-csv "${{ github.event.inputs.csv_output_name }}"
+          --output-csv "${{ github.event.inputs.csv_output_name }}" \
+          --header-rows "${{ github.event.inputs.header_rows }}"
     
     - name: Upload CSV artifact
       uses: actions/upload-artifact@v4
