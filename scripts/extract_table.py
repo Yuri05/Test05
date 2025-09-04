@@ -143,6 +143,7 @@ def extract_tables(pdf_path, pages, output_csv, header_rows=0, flatten_headers=F
             if header_rows and header_rows > 0:
                 print(f"Applying {header_rows} header row(s) to table {idx} (flatten={flatten_headers})")
                 df = _apply_multirow_header(df, header_rows, flatten_headers, header_sep)
+                df.reset_index(drop=True)
             processed_tables.append(df)
 
         # Combine all tables into a single DataFrame
