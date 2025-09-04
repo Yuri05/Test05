@@ -1,4 +1,4 @@
-name: Extract Table A2
+name: Extract Table from PDF as CSV
 
 on:
   workflow_dispatch:
@@ -7,7 +7,6 @@ on:
         description: 'URL of the PDF to process'
         required: true
         type: string
-        default: 'https://example.com/document.pdf'
       pages:
         description: 'Pages to extract (e.g., "all", "1", "1-3", "1,3,5")'
         required: true
@@ -45,7 +44,7 @@ jobs:
     
     - name: Extract tables from PDF
       run: |
-        python scripts/extract_table_a2.py \
+        python scripts/extract_table.py \
           --pdf-url "${{ github.event.inputs.pdf_url }}" \
           --pages "${{ github.event.inputs.pages }}" \
           --output-csv "${{ github.event.inputs.csv_output_name }}"
